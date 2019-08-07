@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery和JS入口函数的区别</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script>
+        window.onload = function(ev){
+            //1.通过原生的JS入口函数可以达到DOM元素
+            var img = document.getElementsByTagName("img")[0];
+            console.log(img);
+            //2.通过原生的JS入口函数可以拿到DOM元素的宽高
+            var width = window.getComputedStyle(img).width;
+            console.log(width);
+        }
+            //1.通过原生的jQuery入口函数可以达到DOM元素
+        $(document).ready(function(){
+            var $img = $("img");
+            console.log($img);
+            //2.通过jQ入口函数不可以拿到DOM元素的宽高
+            var $width = $img.width();
+            console.log($width);
+        });
+
+
+
+
+         //1.原生的JS如果编写了多个入口函数，后面编写的会覆盖前面编写的
+         //2.jQuery中编写多个入口函数，后面的不会覆盖前面的
+        window.onload = function(ev){
+            alert("hello world1");
+        }
+        window.onload = function(ev){
+            alert("hello world2");
+        }
+        
+        $(document).ready(function(){
+            alert("hello world1")
+        });
+        $(document).ready(function(){
+            alert("hello world2")
+        });
+    </script>
+</head>
+<body>
+    <img src="https://ss1.baidu.com/6ONXsjip0QIZ8tyhnq/it/u=3231897502,2872604692&fm=58&bpow=400&bpoh=256" alt="">
+</body>
+</html>
