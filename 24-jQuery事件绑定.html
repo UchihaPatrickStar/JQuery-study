@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery事件绑定</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script>
+        $(function(){
+            /*
+            jQuery中有两种绑定事件方式
+            1.eventName(fn):
+            编码效率略高/ 部分事件jQuery没有实现，所以不能添加
+
+            2.on(eventName,fn):
+            编码效率略低/ 所有js事件都可以添加
+
+            注意点：均可以添加多个相同或者不同类型的事件，且不会覆盖
+
+            */
+            // $("button").click(function(){
+            //     alert("hello world");
+            // });
+            $("button").on("click",function(){
+                alert("hello world");
+            });
+        });
+    </script>
+</head>
+<body>
+    <button>我是按钮</button>
+</body>
+</html>

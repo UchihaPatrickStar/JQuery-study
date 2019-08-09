@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery事件自动触发</title>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    <script>
+        $(function(){
+            /*
+           1.什么是事件冒泡？
+           2.如何组织事件冒泡？
+           3.什么是默认行为？
+           4.如何阻止默认行为？ 
+            */
+            $(".son").click(function(event){
+                alert("son");
+
+            });
+            
+            $(".father").click(function(){
+                alert("father");
+            });
+            // $(".father").trigger("click");
+            // $(".father").triggerHandler("click");
+
+            /*
+            trigger:如果你用trigger自动触发事件，会触发事件冒泡
+            triggerHandler：如果你用triggerHandler自动触发事件，不会触发事件冒泡
+            */
+            // $(".son").trigger("click");
+            // $(".son").triggerHandler("click");
+
+            $("input[type='submit']").click(function(){
+                alert("submit");
+            });
+
+
+            /*
+            trigger:如果利用trigger自动触发事件，会触发默认行为
+            triggerHandler:如果你用triggerHandler自动触发事件，不会触发默认行为
+            */
+            $("input[type='submit']").trigger("click");
+            $("input[type='submit']").triggerHandler("click");
+
+
+            // 注意：这里有一个特例：如果用trigger触发a标签的默认行为，将不会发生页面的跳转，除非在a标签里嵌套一个span标签，然后监听span标签的事件，此时trigger才会触发a标签的默认行为
+
+        });
+    </script>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    .father{
+        width: 200px;
+        height: 200px;
+        background: red;
+    }
+    .son{
+        width: 100px;
+        height: 100px;
+        background: blue;
+    }
+</style>
+<body>
+    <div class="father">
+        <div class="son"></div>
+    </div>
+    <a href="http://www.baidu.com">注册</a>
+    <form action="http://www.taobao.com">
+        <input type="text">
+        <input type="submit">
+    </form>
+</body>
+</html>
