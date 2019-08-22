@@ -129,6 +129,7 @@ $.holdReady(true);作用是暂停ready执行，即使DOM结构加载完成也不
 ### jQuery事件绑定（24.html）
 
 jQuery中有两种绑定事件方式
+
             1.eventName(fn):
             编码效率略高/ 部分事件jQuery没有实现，所以不能添加
 
@@ -140,37 +141,47 @@ jQuery中有两种绑定事件方式
 ### jQuery事件自动触发（27.html）
 
 trigger:如果你用trigger自动触发事件，会触发事件冒泡
-            triggerHandler：如果你用triggerHandler自动触发事件，不会触发事件冒泡
+
+triggerHandler：如果你用triggerHandler自动触发事件，不会触发事件冒泡
+
 trigger:如果利用trigger自动触发事件，会触发默认行为
-            triggerHandler:如果你用triggerHandler自动触发事件，不会触发默认行为
+
+triggerHandler:如果你用triggerHandler自动触发事件，不会触发默认行为
+
 注意：这里有一个特例：如果用trigger触发a标签的默认行为，将不会发生页面的跳转，除非在a标签里嵌套一个span标签，然后监听span标签的事件，此时trigger才会触发a标签的默认行为
 
 ### jQuery自定义事件（28.html）
 
 想要自定义事件，必须满足两个条件
+
             1.事件必须是通过on绑定的
             2.事件必须通过trigger或triggerHandler来触发
 
 ### jQuery事件命名空间（29.html）
 
 想要事件的命名空间有效，必须满足两个条件
+
             1.事件是通过on来绑定的
             2.通过trigger触发事件
 
 ### jQuery事件命名空间面试题（30.html）
 
 利用trigger触发子元素带命名空间的事件，name父元素带相同命名空间的事件也会被触发，而父元素没有命名空间的事件不会被触发
-            利用trigger触发子元素不带命名空间的事件，那么子元素所有相同类型的事件和父元素所有相同类型的事件都会被触发
+
+利用trigger触发子元素不带命名空间的事件，那么子元素所有相同类型的事件和父元素所有相同类型的事件都会被触发
 
 ### jQuery事件委托（31.html）
 
 1.什么是事件委托？
+
             请别人帮忙做事情，然后将做完的结果反馈给我们
+
  在jQuery中，如果通过核心函数找到的元素不止一个，那么添加事件的时候，jQuery会遍历所有找到的元素，给所有找到的元素添加事件
 
 ### jQuery移入移出事件（33.html）
 
 mouseover/mouseout事件，子元素被移入移出也会触发父元素的事件
+
 mouseenter/mouseleave事件，子元素被移入移出不会触发父元素的事件
 推荐使用下面的两个方法：
 
